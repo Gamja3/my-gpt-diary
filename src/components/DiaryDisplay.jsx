@@ -1,4 +1,3 @@
-import React from "react";
 import {
     DiaryContainer,
     ResultTitle,
@@ -17,8 +16,8 @@ import {
     MessageTwoTone,
     SoundTwoTone,
 } from "@ant-design/icons";
-
 import { Image } from "antd";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const ThumbnailImage = styled(Image)`
@@ -27,17 +26,17 @@ const ThumbnailImage = styled(Image)`
     margin-bottom: 15px;
 `;
 
-const DiaryDisplay = ({ data, isLoading }) => {
+const DiaryDisplay = ({ data, isLoading, images }) => {
     return (
         <DiaryContainer>
             {isLoading && (
-                <>
-                    {" "}
+                <div>
                     불러오는중...
                     <LoadingOutlined />
-                </>
+                </div>
             )}
             <ResultTitle>{data.title}</ResultTitle>
+
             <Divider />
             <CardContainer>
                 <CardTitle>
@@ -50,8 +49,14 @@ const DiaryDisplay = ({ data, isLoading }) => {
                 <CardContent>{data.summary}</CardContent>
             </CardContainer>
 
-            <ThumbnailImage src={data.thumbnail} alt="thumbnail" />
-
+            {images.map((image) => (
+                <ThumbnailImage
+                    key={image.id}
+                    src={image.urls.regular}
+                    alt={image.alt_description}
+                />
+            ))}
+            {/* <ThumbnailImage src={data.thumbnail} alt="Thumbnail" /> */}
             <Divider />
             <CardContainer>
                 <CardTitle>

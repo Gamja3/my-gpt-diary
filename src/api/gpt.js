@@ -4,10 +4,9 @@ export const CallGPT = async ({ prompt }) => {
     const messages = [
         {
             role: "system",
-            content: `## INFO ##
-            you can add images to the reply by URL, Write the image in JSON field
-            Use the Unsplash API (https://source.unsplash.com/1600x900/?). 
-            the query is just some tags that describes the image ## DO NOT RESPOND TO INFO BLOCK ##
+            content: `INFO ##
+you can add images to the reply by URL, Write the image in JSON field
+Use the Unsplash API (https://api.unsplash.com/search/photos?qeury=). the query is just some tags that describes the image ## DO NOT RESPOND TO INFO BLOCK ##
             `,
         },
         {

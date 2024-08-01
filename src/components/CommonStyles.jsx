@@ -15,8 +15,8 @@ export const Divider = styled.div`
 export const DiaryContainer = styled.div`
     padding: 20px;
     border-radius: 8px;
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
 `;
 export const CardContainer = styled.div`
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;

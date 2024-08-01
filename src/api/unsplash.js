@@ -1,21 +1,17 @@
-export const Unsplash = async () => {
+import axios from "axios";
+
+export const Unsplash = async ({ query }) => {
     console.log(">>Unsplash");
 
-    // const response = await fetch("https://api.openai.com/v1/chat/completions", {
-    //     method: "POST",
-    //     headers: {
-    //         "Content-Type": "application/json",
-    //         Authorization: `Bearer ${import.meta.env.VITE_GPT_API_KEY}`,
-    //     },
-    //     body: JSON.stringify({
-    //         model: "gpt-3.5-turbo",
-    //         messages,
-    //         temperature: 0.7,
-    //         max_tokens: 1_000,
-    //     }),
-    // });
-    // const responseDate = await response.json();
-
-    // const message = responseDate.choices[0].message.content;
-    // return message;
+    const response = await axios.get(`https://api.unsplash.com/search/photos`, {
+        params: {
+            query,
+            client_id: import.meta.env.VITE_UNSPLASH_ACCESS_KEY,
+            page: 1,
+            per_page: 1,
+            order_by: "relevant", // Optional: you can choose 'latest' or 'relevant'
+            content_filter: "low", // Optional: you can choose 'low' or 'high'
+        },
+    });
+    return response.data;
 };
